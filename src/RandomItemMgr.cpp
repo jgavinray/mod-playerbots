@@ -176,7 +176,7 @@ RandomItemMgr::~RandomItemMgr()
     predicates.clear();
 }
 
-bool RandomItemMgr::HandleConsoleCommand(ChatHandler* handler, char const* args)
+bool RandomItemMgr::HandleConsoleCommand([[maybe_unused]] ChatHandler* handler, [[maybe_unused]] char const* args)
 {
     if (!args || !*args)
     {
@@ -1822,8 +1822,8 @@ uint32 RandomItemMgr::GetUpgrade(Player* player, std::string spec, uint8 slot, u
     return closestUpgrade;
 }
 
-std::vector<uint32> RandomItemMgr::GetUpgradeList(Player* player, std::string spec, uint8 slot, uint32 quality,
-                                                  uint32 itemId, uint32 amount)
+std::vector<uint32> RandomItemMgr::GetUpgradeList(Player* player, [[maybe_unused]] std::string spec, [[maybe_unused]] uint8 slot, [[maybe_unused]] uint32 quality,
+                                                  [[maybe_unused]] uint32 itemId, [[maybe_unused]] uint32 amount)
 {
     std::vector<uint32> listItems;
     if (!player)

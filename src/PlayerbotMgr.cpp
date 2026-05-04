@@ -1278,7 +1278,7 @@ std::string const PlayerbotHolder::ListBots(Player* master)
     return out.str();
 }
 
-std::string const PlayerbotHolder::LookupBots(Player* master)
+std::string const PlayerbotHolder::LookupBots([[maybe_unused]] Player* master)
 {
     std::list<std::string> messages;
     messages.push_back("Classes Available:");
@@ -1498,7 +1498,7 @@ void PlayerbotMgr::TellError(std::string const botName, std::string const text)
     errors[text] = names;
 }
 
-void PlayerbotMgr::CheckTellErrors(uint32 elapsed)
+void PlayerbotMgr::CheckTellErrors([[maybe_unused]] uint32 elapsed)
 {
     time_t now = time(nullptr);
     if ((now - lastErrorTell) < sPlayerbotAIConfig->errorDelay / 1000)

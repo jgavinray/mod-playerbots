@@ -1635,7 +1635,7 @@ bool PlayerbotAI::ContainsStrategy(StrategyType type)
 
 bool PlayerbotAI::HasStrategy(std::string const name, BotState type) { return engines[type]->HasStrategy(name); }
 
-void PlayerbotAI::ResetStrategies(bool load)
+void PlayerbotAI::ResetStrategies([[maybe_unused]] bool load)
 {
     for (uint8 i = 0; i < BOT_STATE_MAX; i++)
         engines[i]->removeAllStrategies();
@@ -1653,7 +1653,7 @@ void PlayerbotAI::ResetStrategies(bool load)
     //     sPlayerbotDbStore->Load(this);
 }
 
-bool PlayerbotAI::IsRanged(Player* player, bool bySpec)
+bool PlayerbotAI::IsRanged([[maybe_unused]] Player* player, bool bySpec)
 {
     PlayerbotAI* botAi = GET_PLAYERBOT_AI(player);
     if (!bySpec && botAi)
@@ -1689,11 +1689,11 @@ bool PlayerbotAI::IsRanged(Player* player, bool bySpec)
     return true;
 }
 
-bool PlayerbotAI::IsMelee(Player* player, bool bySpec) { return !IsRanged(player, bySpec); }
+bool PlayerbotAI::IsMelee([[maybe_unused]] Player* player, bool bySpec) { return !IsRanged(player, bySpec); }
 
-bool PlayerbotAI::IsCaster(Player* player, bool bySpec) { return IsRanged(player, bySpec) && player->getClass() != CLASS_HUNTER; }
+bool PlayerbotAI::IsCaster([[maybe_unused]] Player* player, bool bySpec) { return IsRanged(player, bySpec) && player->getClass() != CLASS_HUNTER; }
 
-bool PlayerbotAI::IsCombo(Player* player, bool bySpec)
+bool PlayerbotAI::IsCombo([[maybe_unused]] Player* player, bool bySpec)
 {
     // int tab = AiFactory::GetPlayerSpecTab(player);
     return player->getClass() == CLASS_ROGUE ||
@@ -2935,7 +2935,7 @@ bool PlayerbotAI::CanCastSpell(uint32 spellid, Unit* target, bool checkHasSpell,
     }
 }
 
-bool PlayerbotAI::CanCastSpell(uint32 spellid, GameObject* goTarget, uint8 effectMask, bool checkHasSpell)
+bool PlayerbotAI::CanCastSpell(uint32 spellid, [[maybe_unused]] GameObject* goTarget, uint8 effectMask, bool checkHasSpell)
 {
     if (!spellid)
         return false;
@@ -3004,7 +3004,7 @@ bool PlayerbotAI::CanCastSpell(uint32 spellid, GameObject* goTarget, uint8 effec
 }
 
 bool PlayerbotAI::CanCastSpell(uint32 spellid, float x, float y, float z, uint8 effectMask, bool checkHasSpell,
-                               Item* itemTarget)
+                               [[maybe_unused]] Item* itemTarget)
 {
     if (!spellid)
         return false;
@@ -3828,7 +3828,7 @@ Player* PlayerbotAI::GetGroupMaster()
     return master;
 }
 
-uint32 PlayerbotAI::GetFixedBotNumer(BotTypeNumber typeNumber, uint32 maxNum, float cyclePerMin)
+uint32 PlayerbotAI::GetFixedBotNumer([[maybe_unused]] BotTypeNumber typeNumber, uint32 maxNum, float cyclePerMin)
 {
     uint32 randseed = rand32();                               // Seed random number
     uint32 randnum = bot->GetGUID().GetCounter() + randseed;  // Semi-random but fixed number for each bot.

@@ -3848,7 +3848,7 @@ void PlayerbotFactory::ApplyEnchantTemplate(uint8 spec)
     // const SpellItemEnchantmentEntry* a = sSpellItemEnchantmentStore.LookupEntry(1);
 }
 
-void PlayerbotFactory::ApplyEnchantAndGemsNew(bool destoryOld)
+void PlayerbotFactory::ApplyEnchantAndGemsNew([[maybe_unused]] bool destoryOld)
 {
     int32 bestGemEnchantId[4] = {-1, -1, -1, -1};  // 1, 2, 4, 8 color
     float bestGemScore[4] = {0, 0, 0, 0};

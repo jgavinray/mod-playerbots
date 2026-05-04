@@ -63,7 +63,7 @@ public:
         return GuildTaskMgr::HandleConsoleCommand(handler, args);
     }
 
-    static bool HandlePerfMonCommand(ChatHandler* handler, char const* args)
+    static bool HandlePerfMonCommand([[maybe_unused]] ChatHandler* handler, [[maybe_unused]] char const* args)
     {
         if (!strcmp(args, "reset"))
         {

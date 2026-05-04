@@ -622,7 +622,7 @@ uint32 GuildTaskMgr::SetTaskValue(uint32 owner, uint32 guildId, std::string cons
     return value;
 }
 
-bool GuildTaskMgr::HandleConsoleCommand(ChatHandler* handler, char const* args)
+bool GuildTaskMgr::HandleConsoleCommand([[maybe_unused]] ChatHandler* handler, char const* args)
 {
     if (!sPlayerbotAIConfig->guildTaskEnabled)
     {

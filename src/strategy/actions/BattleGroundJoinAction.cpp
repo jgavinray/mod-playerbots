@@ -15,7 +15,7 @@
 #include "PositionValue.h"
 #include "UpdateTime.h"
 
-bool BGJoinAction::Execute(Event event)
+bool BGJoinAction::Execute([[maybe_unused]] Event event)
 {
     uint32 queueType = AI_VALUE(uint32, "bg type");
     if (!queueType)  // force join to fill bg
@@ -1078,7 +1078,7 @@ bool BGStatusAction::Execute(Event event)
     return true;
 }
 
-bool BGStatusCheckAction::Execute(Event event)
+bool BGStatusCheckAction::Execute([[maybe_unused]] Event event)
 {
     if (bot->IsBeingTeleported())
         return false;
@@ -1094,7 +1094,7 @@ bool BGStatusCheckAction::Execute(Event event)
 
 bool BGStatusCheckAction::isUseful() { return bot->InBattlegroundQueue(); }
 
-bool BGStrategyCheckAction::Execute(Event event)
+bool BGStrategyCheckAction::Execute([[maybe_unused]] Event event)
 {
     bool inside_bg = bot->InBattleground() && bot->GetBattleground();
     ;

@@ -282,7 +282,7 @@ void RandomPlayerbotMgr::LogPlayerLocation()
     }
 }
 
-void RandomPlayerbotMgr::UpdateAIInternal(uint32 elapsed, bool /*minimal*/)
+void RandomPlayerbotMgr::UpdateAIInternal([[maybe_unused]] uint32 elapsed, bool /*minimal*/)
 {
     if (totalPmo)
         totalPmo->finish();
@@ -2026,7 +2026,7 @@ void RandomPlayerbotMgr::SetValue(Player* bot, std::string const type, uint32 va
     SetValue(bot->GetGUID().GetCounter(), type, value, data);
 }
 
-bool RandomPlayerbotMgr::HandlePlayerbotConsoleCommand(ChatHandler* handler, char const* args)
+bool RandomPlayerbotMgr::HandlePlayerbotConsoleCommand([[maybe_unused]] ChatHandler* handler, [[maybe_unused]] char const* args)
 {
     if (!sPlayerbotAIConfig->enabled)
     {
