@@ -1596,7 +1596,7 @@ uint32 RandomItemMgr::CalculateStatWeight(uint8 playerclass, uint8 spec, ItemTem
     statWeight += attackPower;
 
     // handle negative stats
-    if (basicStatsWeight < 0 && (abs(basicStatsWeight) >= statWeight))
+    if (basicStatsWeight < 0 && (static_cast<uint32>(abs(basicStatsWeight)) >= statWeight))
         statWeight = 0;
     else
         statWeight += basicStatsWeight;
@@ -2218,7 +2218,7 @@ void RandomItemMgr::BuildEquipCacheNew()
         if (quest->GetRequiredClasses())
             continue;
 
-        for (int j = 0; j < quest->GetRewChoiceItemsCount(); j++)
+        for (uint32 j = 0; j < quest->GetRewChoiceItemsCount(); j++)
             if (uint32 itemId = quest->RewardChoiceItemId[j])
             {
                 ItemTemplate const* proto = sObjectMgr->GetItemTemplate(itemId);
@@ -2229,7 +2229,7 @@ void RandomItemMgr::BuildEquipCacheNew()
                 questItemIds.insert(itemId);
             }
 
-        for (int j = 0; j < quest->GetRewItemsCount(); j++)
+        for (uint32 j = 0; j < quest->GetRewItemsCount(); j++)
             if (uint32 itemId = quest->RewardItemId[j])
             {
                 ItemTemplate const* proto = sObjectMgr->GetItemTemplate(itemId);

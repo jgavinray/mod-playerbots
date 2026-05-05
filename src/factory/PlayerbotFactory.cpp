@@ -217,7 +217,7 @@ void PlayerbotFactory::Randomize(bool incremental)
     {
         ResetQuests();
     }
-    if (!sPlayerbotAIConfig->equipmentPersistence || level < sPlayerbotAIConfig->equipmentPersistenceLevel)
+    if (!sPlayerbotAIConfig->equipmentPersistence || level < static_cast<uint32>(sPlayerbotAIConfig->equipmentPersistenceLevel))
     {
         ClearAllItems();
     }
@@ -1596,7 +1596,7 @@ void PlayerbotFactory::InitEquipment(bool incremental, bool second_chance)
         }
         do
         {
-            for (uint32 requiredLevel = bot->GetLevel(); requiredLevel > std::max((int32)bot->GetLevel() - delta, 0);
+            for (uint32 requiredLevel = bot->GetLevel(); requiredLevel > std::max(static_cast<int32>(bot->GetLevel()) - delta, 0);
                  requiredLevel--)
             {
                 for (InventoryType inventoryType : GetPossibleInventoryTypeListBySlot((EquipmentSlots)slot))
@@ -1672,7 +1672,7 @@ void PlayerbotFactory::InitEquipment(bool incremental, bool second_chance)
 
         float bestScoreForSlot = -1;
         uint32 bestItemForSlot = 0;
-        for (int index = 0; index < ids.size(); index++)
+        for (uint32 index = 0; index < ids.size(); index++)
         {
             uint32 newItemId = ids[index];
 
@@ -1764,7 +1764,7 @@ void PlayerbotFactory::InitEquipment(bool incremental, bool second_chance)
 
             float bestScoreForSlot = -1;
             uint32 bestItemForSlot = 0;
-            for (int index = 0; index < ids.size(); index++)
+            for (uint32 index = 0; index < ids.size(); index++)
             {
                 uint32 newItemId = ids[index];
 
@@ -1821,7 +1821,7 @@ bool PlayerbotFactory::IsDesiredReplacement(Item* item)
     // }
 
     uint32 delta = 1 + (80 - bot->GetLevel()) / 10;
-    return proto->Quality < ITEM_QUALITY_RARE || int32(bot->GetLevel() - requiredLevel) > delta;
+    return proto->Quality < ITEM_QUALITY_RARE || static_cast<uint32>(int32(bot->GetLevel() - requiredLevel)) > delta;
 }
 
 inline Item* StoreNewItemInInventorySlot(Player* player, uint32 newItemId, uint32 count)
@@ -2569,7 +2569,7 @@ void PlayerbotFactory::InitTalents(uint32 specNo)
             int index = urand(0, spells_row.size() - 1);
             TalentEntry const* talentInfo = spells_row[index];
             int maxRank = 0;
-            for (int rank = 0; rank < std::min((uint32)MAX_TALENT_RANK, bot->GetFreeTalentPoints()); ++rank)
+            for (uint32 rank = 0; rank < std::min(MAX_TALENT_RANK, bot->GetFreeTalentPoints()); ++rank)
             {
                 uint32 spellId = talentInfo->RankID[rank];
                 if (!spellId)

@@ -38,7 +38,7 @@ bool Trigger::needCheck()
         return true;
 
     uint32 now = getMSTime();
-    if (!lastCheckTime || now - lastCheckTime >= checkInterval)
+    if (!lastCheckTime || now - lastCheckTime >= static_cast<uint32>(checkInterval))
     {
         lastCheckTime = now;
         return true;

@@ -135,12 +135,12 @@ void PlayerbotHolder::HandlePlayerBotLoginCallback(PlayerbotLoginQueryHolder con
         PlayerbotMgr* mgr = GET_PLAYERBOT_MGR(player);
         uint32 count = mgr->GetPlayerbotsCount();
         uint32 cls_count = mgr->GetPlayerbotsCountByClass(bot->getClass());
-        if (count >= sPlayerbotAIConfig->maxAddedBots)
+        if (count >= static_cast<uint32>(sPlayerbotAIConfig->maxAddedBots))
         {
             allowed = false;
             out << "Failure: You have added too many bots";
         }
-        else if (cls_count >= sPlayerbotAIConfig->maxAddedBotsPerClass)
+        else if (cls_count >= static_cast<uint32>(sPlayerbotAIConfig->maxAddedBotsPerClass))
         {
             allowed = false;
             out << "Failure: You have added too many bots for this class";

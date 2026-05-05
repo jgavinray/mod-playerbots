@@ -1175,7 +1175,7 @@ bool QuestObjectiveTravelDestination::isActive(Player* bot)
         GuidVector targets = AI_VALUE(GuidVector, "possible targets");
 
         for (auto& target : targets)
-            if (target.GetEntry() == getEntry() && target.IsCreature() && botAI->GetCreature(target) &&
+            if (static_cast<int32>(target.GetEntry()) == getEntry() && target.IsCreature() && botAI->GetCreature(target) &&
                 botAI->GetCreature(target)->IsAlive())
                 return true;
 
@@ -1227,7 +1227,7 @@ bool RpgTravelDestination::isActive(Player* bot)
 
     for (ObjectGuid const guid : ignoreList)
     {
-        if (guid.GetEntry() == getEntry())
+        if (static_cast<uint32>(guid.GetEntry()) == static_cast<uint32>(getEntry()))
         {
             return false;
         }
@@ -1373,7 +1373,7 @@ bool BossTravelDestination::isActive(Player* bot)
         GuidVector targets = AI_VALUE(GuidVector, "possible targets");
 
         for (auto& target : targets)
-            if (target.GetEntry() == getEntry() && target.IsCreature() && botAI->GetCreature(target) &&
+            if (static_cast<int32>(target.GetEntry()) == getEntry() && target.IsCreature() && botAI->GetCreature(target) &&
                 botAI->GetCreature(target)->IsAlive())
                 return true;
 
