@@ -116,7 +116,7 @@ void PlayerbotFactory::Init()
         if (id == 47181 || id == 50358 || id == 47242 || id == 52639 || id == 47147 || id == 7218)  // Test Enchant
             continue;
 
-        uint32 requiredLevel = spellInfo->BaseLevel;
+        [[maybe_unused]] uint32 requiredLevel = spellInfo->BaseLevel;
 
         for (uint8 j = 0; j < MAX_SPELL_EFFECTS; ++j)
         {
@@ -1998,7 +1998,7 @@ void PlayerbotFactory::EnchantItem(Item* item)
         if (!spellInfo)
             continue;
 
-        uint32 requiredLevel = spellInfo->BaseLevel;
+        [[maybe_unused]] uint32 requiredLevel = spellInfo->BaseLevel;
         if (requiredLevel && (requiredLevel > itemLevel || requiredLevel < itemLevel - 35))
             continue;
 
@@ -3918,7 +3918,7 @@ void PlayerbotFactory::ApplyEnchantAndGemsNew([[maybe_unused]] bool destoryOld)
                 continue;
             }
 
-            uint32 requiredLevel = spellInfo->BaseLevel;
+            [[maybe_unused]] uint32 requiredLevel = spellInfo->BaseLevel;
             if (requiredLevel > bot->GetLevel())
             {
                 continue;
