@@ -681,7 +681,7 @@ void PlayerbotFactory::InitPetTalents()
                 int index = urand(0, spells_row.size() - 1);
                 TalentEntry const* talentInfo = spells_row[index];
                 int maxRank = 0;
-                for (uint32 rank = 0; rank < std::min(MAX_TALENT_RANK, pet->GetFreeTalentPoints()); ++rank)
+                for (uint32 rank = 0; rank < std::min<uint32>(MAX_TALENT_RANK, pet->GetFreeTalentPoints()); ++rank)
                 {
                     uint32 spellId = talentInfo->RankID[rank];
                     if (!spellId)
@@ -2569,7 +2569,7 @@ void PlayerbotFactory::InitTalents(uint32 specNo)
             int index = urand(0, spells_row.size() - 1);
             TalentEntry const* talentInfo = spells_row[index];
             int maxRank = 0;
-            for (uint32 rank = 0; rank < std::min(MAX_TALENT_RANK, bot->GetFreeTalentPoints()); ++rank)
+            for (uint32 rank = 0; rank < std::min<uint32>(MAX_TALENT_RANK, bot->GetFreeTalentPoints()); ++rank)
             {
                 uint32 spellId = talentInfo->RankID[rank];
                 if (!spellId)
