@@ -75,7 +75,7 @@ bool RpgAction::SetNextRpgAction()
 
                 bool isChecked = false;
 
-                for (int32 i = 0; i < NextAction::size(nextActions); i++)
+                for (uint32 i = 0; i < NextAction::size(nextActions); i++)
                 {
                     NextAction* nextAction = nextActions[i];
 
@@ -112,7 +112,7 @@ bool RpgAction::SetNextRpgAction()
     {
         std::vector<std::pair<Action*, uint32>> sortedActions;
 
-        for (int i = 0; i < actions.size(); i++)
+        for (uint32 i = 0; i < actions.size(); i++)
             sortedActions.push_back(std::make_pair(actions[i], relevances[i]));
 
         std::sort(sortedActions.begin(), sortedActions.end(), [](std::pair<Action*, uint32>i, std::pair<Action*, uint32> j) {return i.second > j.second; });

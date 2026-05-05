@@ -1755,7 +1755,7 @@ bool FleeWithPetAction::Execute([[maybe_unused]] Event event)
 
 bool AvoidAoeAction::isUseful()
 {
-    if (getMSTime() - moveInterval < lastMoveTimer)
+    if (getMSTime() - static_cast<uint32>(moveInterval) < static_cast<uint32>(lastMoveTimer))
     {
         return false;
     }
@@ -2171,7 +2171,7 @@ bool MovementAction::CheckLastFlee(float curAngle, std::list<FleeInfo>& infoList
 
 bool CombatFormationMoveAction::isUseful()
 {
-    if (getMSTime() - moveInterval < lastMoveTimer)
+    if (getMSTime() - static_cast<uint32>(moveInterval) < static_cast<uint32>(lastMoveTimer))
     {
         return false;
     }

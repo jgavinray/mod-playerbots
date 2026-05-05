@@ -681,7 +681,7 @@ void PlayerbotFactory::InitPetTalents()
                 int index = urand(0, spells_row.size() - 1);
                 TalentEntry const* talentInfo = spells_row[index];
                 int maxRank = 0;
-                for (int rank = 0; rank < std::min((uint32)MAX_TALENT_RANK, (uint32)pet->GetFreeTalentPoints()); ++rank)
+                for (uint32 rank = 0; rank < std::min(MAX_TALENT_RANK, pet->GetFreeTalentPoints()); ++rank)
                 {
                     uint32 spellId = talentInfo->RankID[rank];
                     if (!spellId)
@@ -1596,7 +1596,7 @@ void PlayerbotFactory::InitEquipment(bool incremental, bool second_chance)
         }
         do
         {
-            for (uint32 requiredLevel = bot->GetLevel(); requiredLevel > std::max(static_cast<int32>(bot->GetLevel()) - delta, 0);
+            for (uint32 requiredLevel = bot->GetLevel(); requiredLevel > static_cast<uint32>(std::max(static_cast<int32>(bot->GetLevel()) - delta, 0));
                  requiredLevel--)
             {
                 for (InventoryType inventoryType : GetPossibleInventoryTypeListBySlot((EquipmentSlots)slot))

@@ -37,7 +37,7 @@ bool TravelAction::Execute([[maybe_unused]] Event event)
         if (!newTarget->IsAlive())
             continue;
 
-        if (newTarget->GetEntry() == target->getDestination()->getEntry())
+        if (newTarget->GetEntry() == static_cast<uint32>(target->getDestination()->getEntry()))
             continue;
 
         if (newTarget->IsInCombat())

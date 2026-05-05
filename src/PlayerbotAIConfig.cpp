@@ -759,7 +759,7 @@ std::vector<std::vector<uint32>> PlayerbotAIConfig::ParseTempTalentsOrder(uint32
 
         spells[talentTabInfo->tabpage].push_back(talentInfo);
     }
-    for (int tab = 0; tab < 3; tab++)
+    for (uint32 tab = 0; tab < 3; tab++)
     {
         if (tab_links.size() <= tab)
         {

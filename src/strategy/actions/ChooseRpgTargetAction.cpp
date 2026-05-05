@@ -82,7 +82,7 @@ float ChooseRpgTargetAction::getMaxRelevance(GuidPosition guidP)
 
             bool isRpg = false;
 
-            for (int32 i = 0; i < NextAction::size(nextActions); i++)
+            for (uint32 i = 0; i < NextAction::size(nextActions); i++)
             {
                 NextAction* nextAction = nextActions[i];
 

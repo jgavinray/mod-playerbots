@@ -28,7 +28,7 @@ bool FollowAction::Execute(Event event)
     else
     {
         WorldLocation loc = formation->GetLocation();
-        if (Formation::IsNullLocation(loc) || loc.GetMapId() == -1)
+        if (Formation::IsNullLocation(loc) || static_cast<int32>(loc.GetMapId()) == -1)
             return false;
         
         MovementPriority priority = botAI->GetState() == BOT_STATE_COMBAT ? MovementPriority::MOVEMENT_COMBAT : MovementPriority::MOVEMENT_NORMAL;

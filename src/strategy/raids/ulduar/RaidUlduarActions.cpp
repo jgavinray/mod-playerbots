@@ -86,7 +86,7 @@ bool FlameLeviathanVehicleAction::MoveAvoidChasing(Unit* target)
         return false;
     if (avoidChaseIdx == -1)
     {
-        for (int i = 0; i < corners.size(); i++)
+        for (uint32 i = 0; i < corners.size(); i++)
         {
             if (bot->GetExactDist(corners[i]) > target->GetExactDist(corners[i]))
                 continue;

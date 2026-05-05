@@ -942,7 +942,7 @@ bool ChooseTravelTargetAction::needForQuest(Unit* target)
                     int required = questTemplate->RequiredNpcOrGoCount[j];
                     int available = questStatus.CreatureOrGOCount[j];
 
-                    if (required && available < required && (target->GetEntry() == entry || justCheck))
+                    if (required && available < static_cast<int>(required) && (static_cast<int32>(target->GetEntry()) == entry || justCheck))
                         return true;
                 }
 
