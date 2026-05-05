@@ -488,7 +488,7 @@ protected:
 
 // node_name , action, prerequisite
 #define ACTION_NODE_P(name, spell, pre)                                                                       \
-    static ActionNode* name(PlayerbotAI* botAI)                                                               \
+    static ActionNode* name([[maybe_unused]] PlayerbotAI* botAI)                                                               \
     {                                                                                                         \
         return new ActionNode(spell, /*P*/ NextAction::array(0, new NextAction(pre), nullptr), /*A*/ nullptr, \
                               /*C*/ nullptr);                                                                 \

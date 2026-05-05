@@ -10,7 +10,7 @@
 #include "GridNotifiersImpl.h"
 #include "Playerbots.h"
 
-bool TravelAction::Execute(Event event)
+bool TravelAction::Execute([[maybe_unused]] Event event)
 {
     TravelTarget* target = AI_VALUE(TravelTarget*, "travel target");
 

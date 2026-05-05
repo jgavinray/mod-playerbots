@@ -18,7 +18,7 @@
 #include "GuildMgr.h"
 #include "BroadcastHelper.h"
 
-bool LootAction::Execute(Event event)
+bool LootAction::Execute([[maybe_unused]] Event event)
 {
     if (!AI_VALUE(bool, "has available loot"))
         return false;

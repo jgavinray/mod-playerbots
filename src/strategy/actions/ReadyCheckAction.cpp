@@ -214,4 +214,4 @@ bool ReadyCheckAction::ReadyCheck()
     return true;
 }
 
-bool FinishReadyCheckAction::Execute(Event event) { return ReadyCheck(); }
+bool FinishReadyCheckAction::Execute([[maybe_unused]] Event event) { return ReadyCheck(); }

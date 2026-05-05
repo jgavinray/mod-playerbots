@@ -1728,7 +1728,7 @@ const Movement::PointsArray MovementAction::SearchForBestPath(float x, float y, 
     return result;
 }
 
-bool FleeAction::Execute(Event event)
+bool FleeAction::Execute([[maybe_unused]] Event event)
 {
     // return Flee(AI_VALUE(Unit*, "current target"));
     return MoveAway(AI_VALUE(Unit*, "current target"));
@@ -1743,7 +1743,7 @@ bool FleeAction::isUseful()
     return true;
 }
 
-bool FleeWithPetAction::Execute(Event event)
+bool FleeWithPetAction::Execute([[maybe_unused]] Event event)
 {
     if (Pet* pet = bot->GetPet())
     {
@@ -1764,7 +1764,7 @@ bool AvoidAoeAction::isUseful()
     return AI_VALUE(Aura*, "area debuff") || !traps.empty() || !triggers.empty();
 }
 
-bool AvoidAoeAction::Execute(Event event)
+bool AvoidAoeAction::Execute([[maybe_unused]] Event event)
 {
     // Case #1: Aura with dynamic object (e.g. rain of fire)
     if (AvoidAuraWithDynamicObj())
@@ -2183,7 +2183,7 @@ bool CombatFormationMoveAction::isUseful()
     return dis > 0.0f;
 }
 
-bool CombatFormationMoveAction::Execute(Event event)
+bool CombatFormationMoveAction::Execute([[maybe_unused]] Event event)
 {
     float dis = AI_VALUE(float, "disperse distance");
     Player* playerToLeave = NearestGroupMember(dis);
@@ -2249,7 +2249,7 @@ Player* CombatFormationMoveAction::NearestGroupMember(float dis)
     return result;
 }
 
-bool DisperseSetAction::Execute(Event event)
+bool DisperseSetAction::Execute([[maybe_unused]] Event event)
 {
     std::string const text = event.getParam();
     if (text == "disable")
@@ -2333,9 +2333,9 @@ bool DisperseSetAction::Execute(Event event)
     return true;
 }
 
-bool RunAwayAction::Execute(Event event) { return Flee(AI_VALUE(Unit*, "master target")); }
+bool RunAwayAction::Execute([[maybe_unused]] Event event) { return Flee(AI_VALUE(Unit*, "master target")); }
 
-bool MoveToLootAction::Execute(Event event)
+bool MoveToLootAction::Execute([[maybe_unused]] Event event)
 {
     LootObject loot = AI_VALUE(LootObject, "loot target");
     if (!loot.IsLootPossible(bot))
@@ -2344,7 +2344,7 @@ bool MoveToLootAction::Execute(Event event)
     return MoveNear(loot.GetWorldObject(bot), sPlayerbotAIConfig->contactDistance);
 }
 
-bool MoveOutOfEnemyContactAction::Execute(Event event)
+bool MoveOutOfEnemyContactAction::Execute([[maybe_unused]] Event event)
 {
     Unit* target = AI_VALUE(Unit*, "current target");
     if (!target)
@@ -2355,7 +2355,7 @@ bool MoveOutOfEnemyContactAction::Execute(Event event)
 
 bool MoveOutOfEnemyContactAction::isUseful() { return AI_VALUE2(bool, "inside target", "current target"); }
 
-bool SetFacingTargetAction::Execute(Event event)
+bool SetFacingTargetAction::Execute([[maybe_unused]] Event event)
 {
     Unit* target = AI_VALUE(Unit*, "current target");
     if (!target)
@@ -2382,7 +2382,7 @@ bool SetFacingTargetAction::isPossible()
     return true;
 }
 
-bool SetBehindTargetAction::Execute(Event event)
+bool SetBehindTargetAction::Execute([[maybe_unused]] Event event)
 {
     Unit* target = AI_VALUE(Unit*, "current target");
     if (!target)
@@ -2427,7 +2427,7 @@ bool MoveOutOfCollisionAction::isUseful()
            botAI->GetAiObjectContext()->GetValue<GuidVector>("nearest friendly players")->Get().size() < 15;
 }
 
-bool MoveRandomAction::Execute(Event event)
+bool MoveRandomAction::Execute([[maybe_unused]] Event event)
 {
     float distance = sPlayerbotAIConfig->tooCloseDistance + urand(10, 30);
 
@@ -2459,9 +2459,9 @@ bool MoveRandomAction::Execute(Event event)
 
 bool MoveRandomAction::isUseful() { return !AI_VALUE(GuidPosition, "rpg target"); }
 
-bool MoveInsideAction::Execute(Event event) { return MoveInside(bot->GetMapId(), x, y, bot->GetPositionZ(), distance); }
+bool MoveInsideAction::Execute([[maybe_unused]] Event event) { return MoveInside(bot->GetMapId(), x, y, bot->GetPositionZ(), distance); }
 
-bool RotateAroundTheCenterPointAction::Execute(Event event)
+bool RotateAroundTheCenterPointAction::Execute([[maybe_unused]] Event event)
 {
     uint32 next_point = GetCurrWaypoint();
     if (MoveTo(bot->GetMapId(), waypoints[next_point].first, waypoints[next_point].second, bot->GetPositionZ(), false,
@@ -2473,7 +2473,7 @@ bool RotateAroundTheCenterPointAction::Execute(Event event)
     return false;
 }
 
-bool MoveFromGroupAction::Execute(Event event)
+bool MoveFromGroupAction::Execute([[maybe_unused]] Event event)
 {
     float distance = atoi(event.getParam().c_str());
     if (!distance)
