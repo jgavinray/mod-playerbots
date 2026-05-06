@@ -26,7 +26,7 @@ void ReturnPositionResetAction::SetReturnPosition(float x, float y, float z)
     posMap["return"] = pos;
 }
 
-bool FollowChatShortcutAction::Execute(Event event)
+bool FollowChatShortcutAction::Execute([[maybe_unused]] Event event)
 {
     Player* master = GetMaster();
     if (!master)
@@ -95,7 +95,7 @@ bool FollowChatShortcutAction::Execute(Event event)
     return true;
 }
 
-bool StayChatShortcutAction::Execute(Event event)
+bool StayChatShortcutAction::Execute([[maybe_unused]] Event event)
 {
     Player* master = GetMaster();
     if (!master)

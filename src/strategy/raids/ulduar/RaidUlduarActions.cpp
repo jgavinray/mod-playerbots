@@ -27,7 +27,7 @@ const std::vector<uint32> availableVehicles = {NPC_VEHICLE_CHOPPER, NPC_SALVAGED
 const std::vector<Position> corners = {
     {183.53f, 66.53f, 409.80f}, {383.03f, 75.10f, 411.71f}, {379.74f, -133.05f, 410.88f}, {158.67f, -137.54f, 409.80f}};
 
-bool FlameLeviathanVehicleAction::Execute(Event event)
+bool FlameLeviathanVehicleAction::Execute([[maybe_unused]] Event event)
 {
     vehicleBase_ = bot->GetVehicleBase();
     vehicle_ = bot->GetVehicle();
@@ -249,7 +249,7 @@ bool FlameLeviathanVehicleAction::ChopperAction(Unit* target)
     return false;
 }
 
-bool FlameLeviathanEnterVehicleAction::Execute(Event event)
+bool FlameLeviathanEnterVehicleAction::Execute([[maybe_unused]] Event event)
 {
     // do not switch vehicles yet
     if (bot->GetVehicle())

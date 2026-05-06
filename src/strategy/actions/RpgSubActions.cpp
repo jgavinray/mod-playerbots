@@ -222,7 +222,7 @@ bool RpgDiscoverAction::Execute([[maybe_unused]] Event event)
 
 std::string const RpgStartQuestAction::ActionName() { return "accept all quests"; }
 
-Event RpgStartQuestAction::ActionEvent(Event event)
+Event RpgStartQuestAction::ActionEvent([[maybe_unused]] Event event)
 {
     WorldPacket p(CMSG_QUESTGIVER_ACCEPT_QUEST);
     p << rpg->guid();
@@ -232,7 +232,7 @@ Event RpgStartQuestAction::ActionEvent(Event event)
 
 std::string const RpgEndQuestAction::ActionName() { return "talk to quest giver"; }
 
-Event RpgEndQuestAction::ActionEvent(Event event)
+Event RpgEndQuestAction::ActionEvent([[maybe_unused]] Event event)
 {
     WorldPacket p(CMSG_QUESTGIVER_COMPLETE_QUEST);
     p << rpg->guid();
@@ -242,11 +242,11 @@ Event RpgEndQuestAction::ActionEvent(Event event)
 
 std::string const RpgBuyAction::ActionName() { return "buy"; }
 
-Event RpgBuyAction::ActionEvent(Event event) { return Event("rpg action", "vendor"); }
+Event RpgBuyAction::ActionEvent([[maybe_unused]] Event event) { return Event("rpg action", "vendor"); }
 
 std::string const RpgSellAction::ActionName() { return "sell"; }
 
-Event RpgSellAction::ActionEvent(Event event) { return Event("rpg action", "vendor"); }
+Event RpgSellAction::ActionEvent([[maybe_unused]] Event event) { return Event("rpg action", "vendor"); }
 
 std::string const RpgRepairAction::ActionName() { return "repair"; }
 
@@ -287,21 +287,21 @@ std::string const RpgBuyPetitionAction::ActionName() { return "buy petition"; }
 
 std::string const RpgUseAction::ActionName() { return "use"; }
 
-Event RpgUseAction::ActionEvent(Event event)
+Event RpgUseAction::ActionEvent([[maybe_unused]] Event event)
 {
     return Event("rpg action", chat->FormatWorldobject(rpg->guidP().GetWorldObject()));
 }
 
 std::string const RpgSpellAction::ActionName() { return "cast random spell"; }
 
-Event RpgSpellAction::ActionEvent(Event event)
+Event RpgSpellAction::ActionEvent([[maybe_unused]] Event event)
 {
     return Event("rpg action", chat->FormatWorldobject(rpg->guidP().GetWorldObject()));
 }
 
 std::string const RpgCraftAction::ActionName() { return "craft random item"; }
 
-Event RpgCraftAction::ActionEvent(Event event)
+Event RpgCraftAction::ActionEvent([[maybe_unused]] Event event)
 {
     return Event("rpg action", chat->FormatWorldobject(rpg->guidP().GetWorldObject()));
 }

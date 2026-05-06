@@ -2409,7 +2409,7 @@ bool SetBehindTargetAction::isPossible()
     return target && !(target->GetVictim() && target->GetVictim()->GetGUID() == bot->GetGUID());
 }
 
-bool MoveOutOfCollisionAction::Execute(Event event)
+bool MoveOutOfCollisionAction::Execute([[maybe_unused]] Event event)
 {
     float angle = M_PI * 2000 / frand(1.f, 1000.f);
     float distance = sPlayerbotAIConfig->followDistance;

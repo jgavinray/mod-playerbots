@@ -23,7 +23,7 @@ const std::vector<uint32> availableTargets = {
     NPC_SKYBREAKER_SORCERER,        NPC_IGB_MURADIN_BRONZEBEARD
 };
 
-bool IccCannonFireAction::Execute(Event event)
+bool IccCannonFireAction::Execute([[maybe_unused]] Event event)
 {
     Unit* vehicleBase = bot->GetVehicleBase();
     Vehicle* vehicle = bot->GetVehicle();
@@ -66,7 +66,7 @@ bool IccCannonFireAction::Execute(Event event)
     return false;
 }
 
-bool IccGunshipEnterCannonAction::Execute(Event event)
+bool IccGunshipEnterCannonAction::Execute([[maybe_unused]] Event event)
 {
     // do not switch vehicles yet
     if (bot->GetVehicle())

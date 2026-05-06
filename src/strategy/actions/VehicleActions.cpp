@@ -18,7 +18,7 @@
 // whether bot is in vehicle, eg: get out of vehicle to cap flag, if we're down to final boss, etc),
 // right now they will enter vehicle based only what's available here, then they're stuck in vehicle until they die
 // (LeaveVehicleAction doesnt do much seeing as they, or another bot, will get in immediately after exit)
-bool EnterVehicleAction::Execute(Event event)
+bool EnterVehicleAction::Execute([[maybe_unused]] Event event)
 {
     // do not switch vehicles yet
     if (bot->GetVehicle())
@@ -95,7 +95,7 @@ bool EnterVehicleAction::EnterVehicle(Unit* vehicleBase, bool moveIfFar)
     return true;
 }
 
-bool LeaveVehicleAction::Execute(Event event)
+bool LeaveVehicleAction::Execute([[maybe_unused]] Event event)
 {
     Vehicle* myVehicle = bot->GetVehicle();
     if (!myVehicle)
