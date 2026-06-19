@@ -311,6 +311,11 @@ bool PlayerbotAIConfig::Initialize()
 
     commandServerPort = sConfigMgr->GetOption<int32>("AiPlayerbot.CommandServerPort", 8888);
     perfMonEnabled = sConfigMgr->GetOption<bool>("AiPlayerbot.PerfMonEnabled", false);
+    perfDumpEnabled = sConfigMgr->GetOption<bool>("AiPlayerbot.PerfDumpEnabled", false);
+    botComputeThreads = sConfigMgr->GetOption<uint32>("AiPlayerbot.BotComputeThreads", 4);
+    asyncPathCompute = sConfigMgr->GetOption<bool>("AiPlayerbot.AsyncPathCompute", false);
+    asyncPathComputePercent = sConfigMgr->GetOption<uint32>("AiPlayerbot.AsyncPathComputePercent", 0);
+    parallelVerify = sConfigMgr->GetOption<bool>("AiPlayerbot.ParallelVerify", false);
 
     LOG_INFO("server.loading", "---------------------------------------");
     LOG_INFO("server.loading", "          Loading TalentSpecs          ");

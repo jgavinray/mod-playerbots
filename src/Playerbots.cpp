@@ -17,6 +17,7 @@
 
 #include "Playerbots.h"
 
+#include "BotPerfTap.h"
 #include "Channel.h"
 #include "Config.h"
 #include "DatabaseEnv.h"
@@ -103,12 +104,28 @@ public:
     {
         if (PlayerbotAI* botAI = GET_PLAYERBOT_AI(player))
         {
-            botAI->UpdateAI(diff);
+            if (sPlayerbotAIConfig->perfDumpEnabled)
+            {
+                auto const started = std::chrono::steady_clock::now();
+                botAI->UpdateAI(diff);
+                auto const elapsed = std::chrono::duration_cast<std::chrono::microseconds>(
+                    std::chrono::steady_clock::now() - started);
+                sBotPerfTap->RecordBotAiTime(player->GetMapId(), elapsed);
+            }
+            else
+            {
+                botAI->UpdateAI(diff);
+            }
         }
 
         if (PlayerbotMgr* playerbotMgr = GET_PLAYERBOT_MGR(player))
         {
             playerbotMgr->UpdateAI(diff);
+        }
+
+        if (sPlayerbotAIConfig->perfDumpEnabled)
+        {
+            sBotPerfTap->MaybeDump();
         }
     }
 

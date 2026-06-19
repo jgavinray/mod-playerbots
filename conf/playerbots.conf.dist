@@ -1290,6 +1290,21 @@ AiPlayerbot.TellWhenAvoidAoe = 0
 # Enables/Disables performance monitor
 AiPlayerbot.PerfMonEnabled = 0
 
+# Enables/Disables coarse playerbot AI timing dump
+AiPlayerbot.PerfDumpEnabled = 0
+
+# Playerbot compute worker count for future default-off compute features
+AiPlayerbot.BotComputeThreads = 4
+
+# Enables/Disables future async path compute
+AiPlayerbot.AsyncPathCompute = 0
+
+# Percentage of eligible future path requests allowed for async compute
+AiPlayerbot.AsyncPathComputePercent = 0
+
+# Enables/Disables future async path verification
+AiPlayerbot.ParallelVerify = 0
+
 #
 #
 #

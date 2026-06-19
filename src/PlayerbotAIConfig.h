@@ -255,6 +255,11 @@ public:
 
     uint32 commandServerPort;
     bool perfMonEnabled;
+    bool perfDumpEnabled;
+    uint32 botComputeThreads;
+    bool asyncPathCompute;
+    uint32 asyncPathComputePercent;
+    bool parallelVerify;
     bool summonWhenGroup;
     bool randomBotShowHelmet;
     bool randomBotShowCloak;
